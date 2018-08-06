@@ -9,7 +9,7 @@ const BUNDLES_DIR = `${DIST_DIR}/bundles`;
 
 const PACKAGES = [
   {
-    name: 'core',
+    name: 'core2',
     dir: '.',
     modulesDir: '.',
     bundleFileName: 'forms',
@@ -57,10 +57,6 @@ for (var pkg of PACKAGES) {
     shell.exit(1);
   }
 
-  if (shell.exec(`node scripts/map-sources -f ${MODULES_DIR}/${pkg.modulesDir}/${pkg.moduleFileName}.js`).code !== 0) {
-    shell.echo(chalk.red(`Error: Bundling failed!`));
-    shell.exit(1);
-  }
 
   shell.echo(`Downleveling ES2015 to ESM/ES5...`);
   shell.cp(`${MODULES_DIR}/${pkg.modulesDir}/${pkg.moduleFileName}.js`, `${MODULES_DIR}/${pkg.modulesDir}/${pkg.moduleFileName}.es5.ts`);
@@ -136,4 +132,4 @@ for (var pkg of PACKAGES) {
 
 shell.cp(`-Rf`, [`LICENSE`, `README.md`], `${DIST_DIR}`);
 
-shell.echo(chalk.green(`Finished building!`));
+shell.echo(chalk.green(`Not finished building!`));
